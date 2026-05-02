@@ -30,6 +30,8 @@ export type Product = {
   images: {
     url: string;
     alt: string;
+    width: number;
+    height: number;
   }[];
   reviews: Review[];
   rating: number;
@@ -79,6 +81,8 @@ export const PRODUCTS: Product[] = [
       {
         url: "/images/thermometer.png",
         alt: "Wireless digital meat thermometer inserted into a steak",
+        width: 1190,
+        height: 1186,
       },
     ],
     reviews: [
@@ -136,6 +140,8 @@ export const PRODUCTS: Product[] = [
       {
         url: "/images/frother.png",
         alt: "Electric milk frother creating foam for a latte",
+        width: 1032,
+        height: 1194,
       },
     ],
     reviews: [
