@@ -1,8 +1,10 @@
 import Image from "next/image";
 import type { Product } from "@/lib/api";
+import {
+  ProductKeyValueList,
+  type ProductKeyValueRow,
+} from "@/shared/components/product-key-value-list";
 import { formatPrice, getPrimaryImage } from "../product-page-utils";
-import type { ProductKeyValueRow } from "./product-key-value-list";
-import { ProductKeyValueList } from "./product-key-value-list";
 
 type ProductHeroProps = {
   product: Product;

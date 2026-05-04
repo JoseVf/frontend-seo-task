@@ -1,5 +1,5 @@
 import type { Product } from "@/lib/api";
-import { RelatedProductCard } from "./related-product-card";
+import { ProductCard } from "@/shared/components/product-card";
 
 type RelatedProductsSectionProps = {
   products: Product[];
@@ -16,7 +16,7 @@ export function RelatedProductsSection({ products }: RelatedProductsSectionProps
       <ul className="flex gap-4 overflow-x-auto pb-2 pr-1 snap-x snap-mandatory">
         {products.map((product) => (
           <li key={product.slug} className="shrink-0 snap-start">
-            <RelatedProductCard product={product} />
+            <ProductCard product={product} />
           </li>
         ))}
       </ul>

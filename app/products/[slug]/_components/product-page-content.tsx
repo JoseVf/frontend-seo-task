@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { Product } from "@/lib/api";
-import { ProductHero } from "./product-hero";
 import {
   ProductKeyValueList,
   type ProductKeyValueRow,
-} from "./product-key-value-list";
+} from "@/shared/components/product-key-value-list";
+import { ProductHero } from "./product-hero";
 import { ProductReviewsSection } from "./product-reviews-section";
 import { RelatedProductsSection } from "./related-products-section";
 

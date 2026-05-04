@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/api";
-import { formatPrice, getPrimaryImage } from "../product-page-utils";
+import { formatPrice, getPrimaryImage } from "@/app/products/[slug]/product-page-utils";
 import { StarRating } from "./star-rating";
 
-type RelatedProductCardProps = {
+type ProductCardProps = {
   product: Product;
 };
 
-export function RelatedProductCard({ product }: RelatedProductCardProps) {
+export function ProductCard({ product }: ProductCardProps) {
   const image = getPrimaryImage(product);
 
   return (

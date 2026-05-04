@@ -1,6 +1,6 @@
 import type { Product } from "@/lib/api";
+import { StarRating } from "@/shared/components/star-rating";
 import { formatReviewDate } from "../product-page-utils";
-import { StarRating } from "./star-rating";
 
 type ProductReviewsSectionProps = {
   reviews: Product["reviews"];
