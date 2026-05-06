@@ -5,8 +5,6 @@ import { absoluteUrl, productUrl } from "@/lib/seo";
 const FALLBACK_PRODUCT_IMAGE = {
   url: "/favicon.ico",
   alt: "Kitchen Gadgets Store",
-  width: 512,
-  height: 512,
 };
 
 export function formatPrice(value: number, currency: string): string {
@@ -63,8 +61,6 @@ export function buildProductMetadata(product: Product): Metadata {
       images: [
         {
           url: primaryImageUrl,
-          width: primaryImage.width,
-          height: primaryImage.height,
           alt: primaryImage.alt,
         },
       ],
