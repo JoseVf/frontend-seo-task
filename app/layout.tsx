@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kitchen Gadgets Store",
-  description: "Frontend SEO Task",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Kitchen Gadgets Store",
+    template: "%s | Kitchen Gadgets Store",
+  },
+  description:
+    "Shop kitchen gadgets with detailed product information and reviews.",
 };
 
 export default function RootLayout({

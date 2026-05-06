@@ -48,3 +48,42 @@ Run the following commands to get started
 
 - GitHub repo
 - README explaining your decisions — **the text above is the task brief; include your write-up** (new section at the end of this README) covering tradeoffs, caching, and SEO choices.
+
+---
+
+## Implementation Decisions
+
+### Metadata strategy
+
+- Product pages use `generateMetadata` to build title, description, canonical URL, Open Graph, and Twitter metadata from product data.
+- A shared site URL source is used with `NEXT_PUBLIC_SITE_URL` override and `http://localhost:3000` fallback.
+- URL-based metadata uses absolute URLs, including canonical and social image URLs.
+- Not-found metadata is marked `noindex, nofollow` to avoid indexing invalid product URLs.
+
+### Caching strategy
+
+- Product API helpers centralize fetch behavior with `cache: "force-cache"` and `next.revalidate` set to 300 seconds.
+- Shared cache tags are applied for product resources to support scalable invalidation patterns.
+- Request options are merged in one place so page-level overrides remain possible without duplicating caching logic.
+- `generateStaticParams` pre-renders known product slugs while keeping ISR-compatible data fetching behavior.
+
+### Structured data approach
+
+- Product pages render JSON-LD using schema.org `Product`.
+- JSON-LD includes `offers`, `aggregateRating`, and `review`.
+- Product URL and image fields are generated as absolute URLs.
+- JSON is sanitized before injection by replacing `<` characters to reduce XSS risk in script output.
+
+### Robots and sitemap choices
+
+- `app/robots.ts` allows crawling and points crawlers to the sitemap URL.
+- `app/sitemap.ts` includes homepage and all product URLs.
+- Each product entry uses `updatedAt` (or `createdAt`) as `lastModified`.
+- A single sitemap file is used because the catalog size is small.
+
+### SEO/performance tradeoffs
+
+- Data is fetched through shared helpers to keep behavior consistent across metadata, page rendering, and sitemap generation.
+- `next/image` is used with explicit width/height and descriptive alt text to reduce CLS and improve image delivery.
+- Semantic HTML (`main`, `article`, `section`, `dl`, `time`) improves crawlability and content structure.
+- Internal links to related products and back to catalog improve discovery and crawl paths.
